@@ -12,14 +12,17 @@ const Popularjobs = () => {
  const {data, isLoading, error} = useFetch('search', {
   query: 'React developer',
   num_pages: 1
- })
+ });
  const [selectedJob,setSelectedJob]= useState()
-const handleCardPress= (item) =>{}
+const handleCardPress= (item) =>{
+  router.push(`/job-details/${item.job_id}`);
+  setSelectedJob(item.job_id);
+};
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}> popular jobs</Text>
+        <Text style={styles.headerTitle}> Popular jobs</Text>
         <TouchableOpacity>
           <Text style={styles.headerBtn}>
             show all
@@ -29,17 +32,19 @@ const handleCardPress= (item) =>{}
       <View style={styles.cardsContainer}>
         {isLoading ? (
           <ActivityIndicator size="large" colors={COLORS.primary}/>
-        ): error ? (
+        ) : error ? (
           <Text> something went wrong</Text>
-        ): (
+        ) : (
           <FlatList
-          data={[1,2,3,4,5,6,7]}
+          data={data}
           renderItem={({item}) => (
             <PopularJobCard
             item={item }
+            selectedJob={selectedJob}
+                handleCardPress={handleCardPress}
             />
           )}
-          keyExtractor={item => item?.job_id}
+          keyExtractor={(item) => item.job_id}
           contentContainerStyle={{ columnGap: SIZES.medium}}
           horizontal
           />
@@ -47,7 +52,7 @@ const handleCardPress= (item) =>{}
       </View>
 
     </View>
-  )
-}
+  );
+};
 
 export default Popularjobs
