@@ -14,7 +14,7 @@ const JobDetails = () => {
     const params =useLocalSearchParams();
     const router =useRouter();
 
-    const {data, isLoading, error, refetch}= useFetch('job-detatils', {
+    const {data, isLoading, error, refetch}= useFetch('job-details', {
         job_id: params.id
     });
 
@@ -29,23 +29,27 @@ const JobDetails = () => {
 
     const displayTabContent= () => {
         switch(activeTab){
-            case " Qualifications":
-                return ( <Specifics
-                    title="Qualifications"
-                    points={data[0].job_highlights?.Qualifications ?? ['N/A']}
-                    />);
+            case "Qualifications":
+                return (
+                  <Specifics
+                    title='Qualifications'
+                    points={data[0].job_highlights?.Qualifications ?? ["N/A"]}
+                  />
+                );
                 
             case "About":
                 return(
                      <JobAbout
                 info={data[0].job_description ?? "No data provided"}
                 />);
-            case " Responsibilities":
-                return  (
-                <Specifics
-                title="Responsibilities"
-                points={data[0].job_highlights?.Responsibilities ?? ['N/A']}
-                />)
+                case "Responsibilities":
+                    return (
+                      <Specifics
+                        title='Responsibilities'
+                        points={data[0].job_highlights?.Responsibilities ?? ["N/A"]}
+                      />
+                    );
+            
             default: 
             return null
         }
@@ -76,7 +80,7 @@ const JobDetails = () => {
     }}
     />
     <> 
-    //react fragment
+    
 
     <ScrollView  showsVerticalScrollIndicator={false} 
     refreshControl={
