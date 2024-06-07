@@ -13,7 +13,7 @@ import styles from './welcome.style'
 import { icons,SIZES } from '../../../constants';
 
 const jobTypes = ["Full-time", "Part-time", "Contractor"];
-const Welcome = ({searchTerm, setSearchTerm, handleClick}) => {
+const Welcome = (searchTerm, setSearchTerm, handleClick) => {
 const router=useRouter();
 const [activeJobType, setActiveJobType]= useState('Full-time')
 
@@ -27,8 +27,7 @@ const [activeJobType, setActiveJobType]= useState('Full-time')
       </View>
       <View style={styles.searchContainer}>
         <View style={styles.searchWrapper}>
-          <TextInput
-           style={styles.searchInput}
+          <TextInput style={styles.searchInput}
                       value={searchTerm}
                       onChangeText= { (text) => setSearchTerm(text)}
                       placeholder='what are you looking for?'
@@ -57,7 +56,7 @@ const [activeJobType, setActiveJobType]= useState('Full-time')
             <Text style={styles.tabText(activeJobType,item)}>{item}</Text>
           </TouchableOpacity>
         )}
-        keyExtractor={(item )=> item}
+        keyExtractor={item => item}
         contentContainerStyle={{columnGap:SIZES.small}}
         horizontal
         />
@@ -66,4 +65,4 @@ const [activeJobType, setActiveJobType]= useState('Full-time')
   )
 }
 
-export default Welcome;
+export default Welcome
