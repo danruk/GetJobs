@@ -4,10 +4,7 @@ import { View, Text, Image } from 'react-native'
 import styles from './company.style'
 import { icons } from '../../../constants'
 import { checkImageURL } from "../../../utils";
-
-
-const Company = ({ companyLogo, jobTitle, companyName, location }) => {
-
+const Company = ({companyLogo, JobTitle, companyName, Location}) => {
   return (
     <View  style={styles.container}>
       <View style={styles.logoBox}>
@@ -21,7 +18,7 @@ const Company = ({ companyLogo, jobTitle, companyName, location }) => {
       </View>
       <View style={styles.jobTitleBox }> 
         <Text style={styles.jobTitle}>
-        {jobTitle}
+        {JobTitle}
         </Text>
       </View>
       <View style={styles.companyInfoBox}>
